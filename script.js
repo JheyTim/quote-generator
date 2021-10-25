@@ -51,7 +51,10 @@ const getQuotes = async () => {
     const response = await fetch(apiUrl);
     apiQuotes = await response.json();
     newQuote();
-  } catch (error) {}
+  } catch (error) {
+    complete();
+    quoteText.textContent = "Can't fetch quote. try again.";
+  }
 };
 
 // Tweet quote
