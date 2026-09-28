@@ -1,9 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- UTF-8 supports quote punctuation; viewport enables responsive mobile sizing. -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quote Generator</title>
+    <!-- Use the local logo as the favicon displayed beside the browser tab title. -->
+    <link rel="icon" type="image/png" href="logo.png" />
+    <!-- Font Awesome supplies icons; the local stylesheet defines layout and animation. -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
@@ -11,17 +15,18 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- IDs connect the markup to script.js, which updates and shows/hides the card. -->
     <div class="quote-container" id="quote-container">
-      <!-- Quote -->
+      <!-- JavaScript fills this empty span and applies long-quote styling when needed. -->
       <div class="quote-text">
         <i class="fas fa-quote-left"></i>
         <span id="quote"></span>
       </div>
-      <!-- Author -->
+      <!-- JavaScript inserts the author, falling back to "Unknown" if missing. -->
       <div class="quote-author">
         <span id="author"></span>
       </div>
-      <!-- Buttons -->
+      <!-- Click handlers open the X composer or select another cached quote. -->
       <div class="button-container">
         <button class="twitter-button" id="twitter" title="Tweet This!">
           <i class="fab fa-x-twitter"></i>
@@ -30,7 +35,10 @@
       </div>
     </div>
 
-    <!-- Script -->
+    <!-- CSS animates the spinner; JavaScript toggles its native hidden property. -->
+    <div class="loader" id="loader"></div>
+
+    <!-- Run after the markup so elements exist before JavaScript looks them up. -->
     <script src="script.js"></script>
   </body>
 </html>
