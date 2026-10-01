@@ -10,20 +10,20 @@ const loader = document.getElementById('loader');
 let apiQuotes = [];
 
 // Replace the quote card with the spinner using the native HTML hidden property.
-function loading() {
+function showLoadingSpinner() {
   loader.hidden = false;
   quoteContainer.hidden = true;
 }
 
 // Reveal the updated card and hide the spinner after rendering.
-function complete() {
+function removeLoadingSpinner() {
   quoteContainer.hidden = false;
   loader.hidden = true;
 }
 
 // Render a cached quote. This function requires a nonempty apiQuotes array.
 function newQuote() {
-  loading();
+  showLoadingSpinner();
 
   // Turn a random number into an array index, then extract quote and author.
   // Independent selections mean the same quote can appear consecutively.
@@ -46,14 +46,13 @@ function newQuote() {
   }
 
   // Insert plain text rather than HTML, then show the completed card.
-
   quoteText.textContent = quote;
-  complete();
+  removeLoadingSpinner();
 }
 
 // Fetch the initial batch asynchronously while the spinner is displayed.
 async function getQuotes() {
-  loading();
+  showLoadingSpinner();
 
   const apiUrl = 'https://dummyjson.com/quotes';
 
